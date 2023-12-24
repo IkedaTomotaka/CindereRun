@@ -45,7 +45,7 @@ public class SceneTransitionManager : MonoBehaviour
         }
 
         }
-        if (gameManager.CurrentState == GameManager.GameState.Epilogue)
+        if (gameManager.CurrentState == GameManager.GameState.Epilogue ||gameManager.CurrentState == GameManager.GameState.Prologue)
         {
         if (Input.GetButtonDown("Cancel"))
         {
