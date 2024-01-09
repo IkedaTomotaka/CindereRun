@@ -1291,9 +1291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReturnTitleTime: 3
-  retrySceneName: Stage1
-  nextSceneName: Stage1
-  titleSceneName: Stage1
+  retrySceneName: 
+  nextSceneName: 
+  titleSceneName: 
   gameStateController: {fileID: 109454270}
   stateAfterRetry: 1
   stateAfterNext: 5
