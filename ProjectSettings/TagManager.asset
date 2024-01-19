@@ -9,6 +9,9 @@ TagManager:
   - buf
   - chandelier
   - GameOver
+  - AnimTrigger
+  - Item2
+  - Item3
   layers:
   - Default
   - TransparentFX
