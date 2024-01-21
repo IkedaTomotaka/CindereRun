@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class kari_proyou : MonoBehaviour
+public class Kari_proyou : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     private float remainingTime;
     private GameStateController gameStateController; // GameStateControllerへの参照
     private GameManager gameManager;
-    private SEmanager sEmanager;
+    private AudioController audioController;
     private VerticalGradientChanger verticalGradientChanger;
 
     void Awake()
@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
         gameStateController = FindObjectOfType<GameStateController>(); // GameStateControllerの参照を取得
         // GameManagerコンポーネントを取得して参照を設定
         gameManager = FindObjectOfType<GameManager>();
-        sEmanager = FindObjectOfType<SEmanager>();
+        audioController = FindObjectOfType<AudioController>();
         verticalGradientChanger = FindObjectOfType<VerticalGradientChanger>();
 
         UpdateTimeText();
@@ -71,7 +71,7 @@ public class Timer : MonoBehaviour
                     remainingTime = 0;
                     UpdateTimeText();
                     gameStateController.SetGameOverState();
-                    sEmanager.PlayGameOverSE();
+                    audioController.PlayGameOverSE();
                 }
             }
         }
@@ -116,12 +116,7 @@ public class Timer : MonoBehaviour
 
     private void PlayGameOverSE()
     {
-        // BGMManager呼び
-        BGMmanager bgmmanager = FindObjectOfType<BGMmanager>();
-        if (bgmmanager != null)
-        {
-            bgmmanager.PlayGameOverSE();
-        }
+            audioController.PlayGameOverSE();
     }
 
     public void StopTime()

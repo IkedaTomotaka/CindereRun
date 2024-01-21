@@ -30,7 +30,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.CurrentState == GameManager.GameState.Start)
+        /*if (gameManager.CurrentState == GameManager.GameState.Start)
         {
             if (Input.GetButtonDown("Cancel"))
             {
@@ -39,14 +39,14 @@ public class SceneTransitionManager : MonoBehaviour
             }
             step_time += Time.deltaTime;
 
-         /*
+         
          if(step_time >= ReturnTitleTime)
          {
             Title();
             //Debug.Log("akrgna");
          }
-         */
-        }
+         
+        }*/
 
         if (gameManager.CurrentState == GameManager.GameState.Prologue)
         {

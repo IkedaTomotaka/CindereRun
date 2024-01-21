@@ -9,7 +9,7 @@ public class PlayerCollisionControl : MonoBehaviour
     public float invincibilityDuration = 2.0f; // コライダー無効化の時間
     private bool isInvincible = false;
     private AnimManager animManager;
-    private SEmanager sEmanager;
+    private AudioController audioController;
     private GameObject timerCountUpGameObject;
     private GameObject bufObikeGameObject1;
     private GameObject bufObikeGameObject2;
@@ -35,7 +35,7 @@ public class PlayerCollisionControl : MonoBehaviour
         //gameStateController.SetPlayingState();
         animManager = FindObjectOfType<AnimManager>();
         playerKnockBack = GetComponent<PlayerKnockBack>();
-        sEmanager = FindObjectOfType<SEmanager>();
+        audioController = FindObjectOfType<AudioController>();
         timerCountUpGameObject = GameObject.Find("Canvas/TimerCountUp");
         bufObikeGameObject1 = GameObject.Find("Canvas/BuffObike1");
         bufObikeGameObject2 = GameObject.Find("Canvas/BuffObike2");
@@ -56,7 +56,7 @@ public class PlayerCollisionControl : MonoBehaviour
             if (gameTimer != null)
             {
                 gameTimer.SubtractTime(gameTimer.timePenalty); // 敵に触れた時に時間ペナルティを適用
-                sEmanager.PlayDamageSE();
+                audioController.PlayDamageSE();
             }
 
             if (animManager != null)
@@ -72,7 +72,7 @@ public class PlayerCollisionControl : MonoBehaviour
             if (gameStateController != null)
             {
                 gameStateController.SetGameClearState(); // ゲームクリア状態を設定
-                sEmanager.PlayGameClearSE();
+                //sEmanager.PlayGameClearSE();
             }
             // Debug.Log("Goal Reached!");
         }
@@ -107,7 +107,7 @@ public class PlayerCollisionControl : MonoBehaviour
             if (gameTimer != null)
             {
                 gameTimer.AddTime(gameTimer.timeBonus); //アイテム取得で時間ボーナスを適用
-                sEmanager.PlayTimeBonusSE();
+                audioController.PlayTimeBonusSE();
                 // Itemに触れた際の処理
                 Invoke("BonusObjectFalse", 2);
             }
@@ -155,7 +155,7 @@ public class PlayerCollisionControl : MonoBehaviour
             if (gameTimer != null)
             {
                 gameTimer.AddTime(gameTimer.timeBonus); //アイテム取得で時間ボーナスを適用
-                sEmanager.PlayTimeBonusSE();
+                audioController.PlayTimeBonusSE();
                 // Itemに触れた際の処理
                 Invoke("BonusObjectFalse", 2);
             }
@@ -179,7 +179,7 @@ public class PlayerCollisionControl : MonoBehaviour
             if(gameStateController != null)
             {
                 gameStateController.SetGameOverState();
-                sEmanager.PlayGameOverSE();
+                //audioController.PlayGameOverSE();
             }
         }
         else if(collision.CompareTag("AnimTrigger"))

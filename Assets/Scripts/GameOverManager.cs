@@ -7,7 +7,8 @@ public class GameOverManager : MonoBehaviour
     public GameObject buttonA;
     public GameObject buttonB;
     public SpriteRenderer gameOverSprite;       // GameOverの画像ファイル
-
+    public SpriteRenderer gameOverText;
+    public SpriteRenderer gameOverObike;
     public GameManager gameManager; // GameManagerへの参照
     private AnimManager animManager;
 
@@ -70,5 +71,7 @@ public class GameOverManager : MonoBehaviour
         buttonA.SetActive(isActive);
         buttonB.SetActive(isActive);
         gameOverSprite.gameObject.SetActive(isActive);
+        gameOverText.gameObject.SetActive(isActive);
+        gameOverObike.gameObject.SetActive(isActive);
     }
 }

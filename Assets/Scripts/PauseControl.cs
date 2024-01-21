@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PauseControl : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class PauseControl : MonoBehaviour
     public Text gamePauseText;       // ポーズメッセージを表示するテキスト
     public GameManager gameManager;  // GameManagerへの参照
     public GameStateController gameStateController; // GameStateControllerへの参照
+    private List<ObjSetActive> objSetActiveList = new List<ObjSetActive>();
 
     private void Awake()
     {
@@ -16,6 +19,17 @@ public class PauseControl : MonoBehaviour
         if (gameManager == null)
         {
             Debug.LogError("GameManager not found in the scene.");
+        }
+
+        // 現在のシーン名を取得
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // 特定のシーンでのみAnimatorを取得する
+        if (currentSceneName == "Stage3")
+        {
+        
+            // シーン内のすべてのObjSetActiveを検索してリストに追加
+            objSetActiveList.AddRange(FindObjectsOfType<ObjSetActive>());
         }
     }
 
@@ -29,6 +43,7 @@ public class PauseControl : MonoBehaviour
 
     private void Update()
     {
+        //objSetActiveList.AddRange(FindObjectsOfType<ObjSetActive>());
         // キャンセルボタン（多くの場合はエスケープキー）が押されたかどうかをチェック
         if (Input.GetButtonDown("Cancel"))
         {
@@ -54,6 +69,19 @@ public class PauseControl : MonoBehaviour
     {
         // ゲームを再開するためにPlaying状態に設定
         gameStateController.SetPlayingState();
+
+        // 現在のシーン名を取得
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // 特定のシーンでのみ以下の処理を実行
+        if (currentSceneName == "Stage3")
+        {
+            // すべてのObjSetActiveオブジェクトに対して操作を行う
+            foreach (var objSetActive in objSetActiveList)
+            {
+                objSetActive.AnimStart(); // 仮にObjSetActiveにAnimStartメソッドがあるとします
+            }
+        }
     }
 
     public void Pause()
