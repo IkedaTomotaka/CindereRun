@@ -46,6 +46,9 @@ public class MenuNavigationController : MonoBehaviour
             case GameManager.GameState.Pause:
                 SelectDefaultButtonIfChanged(defaultPauseButton);
                 break;
+            case GameManager.GameState.Credit:
+                SelectDefaultButtonIfChanged(defaultPauseButton);
+                break;
             case GameManager.GameState.GameOver:
                 SelectDefaultButtonIfChanged(defaultGameOverButton);
                 break;

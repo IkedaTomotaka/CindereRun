@@ -6,45 +6,50 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     private GameManager gameManager;
+    public GameStateController gameStateController;
+    public string nextSceneName;
 
     private void Awake()
     {
-        gameManager = GameManager.Instance;
+      gameManager = FindObjectOfType<GameManager>();
+      gameStateController = FindObjectOfType<GameStateController>();
     }
 
     // タイトルシーンへ遷移
     public void GoToTitleScene()
     {
         SceneManager.LoadScene("Title");
-        gameManager.ChangeState(GameManager.GameState.Start);
+        gameStateController.SetStartState();
+    }
+
+    public void GoToTitleState()
+    {
+        gameStateController.SetStartState();
     }
 
     // 次のステージへ遷移
     public void GoToNextStage()
     {
         // 次のステージのシーン名を指定
-        SceneManager.LoadScene("NextStageSceneName");
-        gameManager.ChangeState(GameManager.GameState.Playing);
+        SceneManager.LoadScene(nextSceneName);
+        gameStateController.SetCountdownState();
     }
 
-    // ゲームオーバーシーンへ遷移
-    public void GoToGameOverScene()
+    public void GoToEpilogue()
     {
-        SceneManager.LoadScene("GameOver");
-        gameManager.ChangeState(GameManager.GameState.GameOver);
+        SceneManager.LoadScene("epilogue");
+        gameStateController.SetEpilogueState();
     }
 
-    // ゲームクリアシーンへ遷移
-    public void GoToGameClearScene()
+    public void GoToCreditState()
     {
-        SceneManager.LoadScene("GameClear");
-        gameManager.ChangeState(GameManager.GameState.GameClear);
+        gameStateController.SetCreditState();
     }
 
     // ゲームを再スタート
-    public void RestartGame()
+    public void RetryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        gameManager.ChangeState(GameManager.GameState.Playing);
+        gameStateController.SetPlayingState();
     }
 }
