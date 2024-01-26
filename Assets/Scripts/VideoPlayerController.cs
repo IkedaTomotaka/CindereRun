@@ -7,9 +7,10 @@ public class VideoPlayerController : MonoBehaviour
     public VideoPlayer videoPlayer;
     public string nextSceneName;
     [SerializeField] public float delayTime = 2f;
-
+    public GameStateController gameStateController; // GameStateControllerへの参照
     void Start()
     {
+        gameStateController = FindObjectOfType<GameStateController>();
         if (videoPlayer != null)
         {
             videoPlayer.loopPointReached += OnVideoEnd;
@@ -23,6 +24,7 @@ public class VideoPlayerController : MonoBehaviour
 
     void LoadNextScene()
     {
+        gameStateController.SetRuleState();
         SceneManager.LoadScene(nextSceneName);
     }
 }

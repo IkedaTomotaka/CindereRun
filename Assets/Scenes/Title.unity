@@ -894,8 +894,6 @@ RectTransform:
   - {fileID: 409741619}
   - {fileID: 1315451544}
   - {fileID: 238879571}
-  - {fileID: 1887863997}
-  - {fileID: 611141130}
   - {fileID: 565867092}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -996,7 +994,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 444768068}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &565867093
 SpriteRenderer:
@@ -1039,7 +1037,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: db6417c5e13452846ac0de167153dbf3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24dc3c1ab6571094daeefbd1a5d44c43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1081,6 +1079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStateController: {fileID: 109454270}
   nextSceneName: prologue
+  countdownController: {fileID: 0}
 --- !u!4 &566722614
 Transform:
   m_ObjectHideFlags: 0
@@ -1125,11 +1124,11 @@ RectTransform:
   m_GameObject: {fileID: 611141129}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.0013563366}
-  m_LocalScale: {x: 0.8999999, y: 0.8999999, z: 0.8999999}
+  m_LocalScale: {x: 0.8999998, y: 0.8999998, z: 0.8999998}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 444768068}
-  m_RootOrder: 7
+  m_Father: {fileID: 1109634762}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1574,6 +1573,7 @@ MonoBehaviour:
   defaultGameOverButton: {fileID: 0}
   defaultGameClearButton: {fileID: 0}
   defaultGameStartButton: {fileID: 1887863996}
+  defaultGameRuleButton: {fileID: 0}
   gameStateController: {fileID: 109454270}
 --- !u!4 &1016803805
 Transform:
@@ -1811,6 +1811,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1655054521}
+  - {fileID: 1887863997}
+  - {fileID: 611141130}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2376,7 +2378,7 @@ GameObject:
   - component: {fileID: 1655054523}
   - component: {fileID: 1655054522}
   m_Layer: 5
-  m_Name: "\u30DC\u30BF\u30F3\u3092\u62BC\u3057\u3066\u30B9\u30BF\u30FC\u30C8"
+  m_Name: "B\u30DC\u30BF\u30F3\u3067\u30BF\u30A4\u30C8\u30EB\u306B\u623B\u308B"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2400,7 +2402,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -850}
-  m_SizeDelta: {x: 800, y: 125}
+  m_SizeDelta: {x: 908, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1655054522
 Animator:
@@ -2558,15 +2560,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmAudioSource: {fileID: 705214825}
-  titleBGM: {fileID: 8300000, guid: b5b2a7abcd8010548beef0c7a885ed00, type: 3}
+  titleBGM: {fileID: 0}
   stageBGM: {fileID: 8300000, guid: 301f87bff688c1f41b0241464760d006, type: 3}
-  creditBGM: {fileID: 8300000, guid: b5b2a7abcd8010548beef0c7a885ed00, type: 3}
+  creditBGM: {fileID: 0}
   seAudioSource: {fileID: 1255617377}
   timeBonusSE: {fileID: 8300000, guid: 62c6f14e1f63d90458bffad27b14afe4, type: 3}
   gameClearSE: {fileID: 8300000, guid: 84a9cfb53ffb82a4096c4910330f146e, type: 3}
   gameOverSE: {fileID: 8300000, guid: 0798caf3c7c19e7449eaeb5a4bd99864, type: 3}
   damageSE: {fileID: 8300000, guid: b2372f37533f4e743ba3dc4dcf735c09, type: 3}
-  clickSE: {fileID: 8300000, guid: 51091db3274cecc4ea3ee81360eb4a25, type: 3}
+  clickSE: {fileID: 8300000, guid: ea1ae991b7fdcd8488e5998724db930a, type: 3}
 --- !u!4 &1684531910
 Transform:
   m_ObjectHideFlags: 0
@@ -2682,8 +2684,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 444768068}
-  m_RootOrder: 6
+  m_Father: {fileID: 1109634762}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

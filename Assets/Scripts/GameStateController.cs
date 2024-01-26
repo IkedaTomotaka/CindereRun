@@ -86,4 +86,13 @@ public class GameStateController : MonoBehaviour
             //Debug.Log("Credit State Set");
         }
     }
+
+    public void SetRuleState()
+    {
+        if (gameManager != null)
+        {
+            gameManager.CurrentState = GameManager.GameState.Rule;
+            //Debug.Log("Epilogue State Set");
+        }
+    }
 }

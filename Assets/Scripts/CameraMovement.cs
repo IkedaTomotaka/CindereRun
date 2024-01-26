@@ -27,7 +27,11 @@ public class CameraMovement : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             MoveCameraVertically(); // 垂直移動処理
-            MoveCameraHorizontally(); // 水平移動処理
+            //MoveCameraHorizontally(); // 水平移動処理
+        }
+        else
+        {
+            elapsedTime = 0f;
         }
     }
 
@@ -43,7 +47,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void MoveCameraHorizontally()
+    /*void MoveCameraHorizontally()
     {
         // プレイヤーの位置を取得
         Vector3 playerPosition = FindObjectOfType<PlayerMovement>().transform.position;
@@ -53,5 +57,5 @@ public class CameraMovement : MonoBehaviour
         Vector3 newCameraPosition = new Vector3(newX, transform.position.y, transform.position.z);
         // カメラの位置を更新
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-    }
+    }*/
 }

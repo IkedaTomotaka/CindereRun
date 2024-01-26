@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         Prologue,   //プロローグの状態
         Epilogue,    //エピローグの状態
         Credit, //クレジットの状態
+        Rule,
     }
 
     public GameState CurrentState { get; set; }
@@ -64,6 +65,8 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Credit:
                 break;
+            case GameState.Rule:
+            break;
         }
 
         //Debug.Log(currentState);
@@ -73,5 +76,6 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState newState)
     {
         currentState = newState;
+        Debug.Log(currentState);
     }
 }

@@ -72,6 +72,7 @@ public class PlayerCollisionControl : MonoBehaviour
             if (gameStateController != null)
             {
                 gameStateController.SetGameClearState(); // ゲームクリア状態を設定
+                audioController.PlayGameClearSE();
                 //sEmanager.PlayGameClearSE();
             }
             // Debug.Log("Goal Reached!");
@@ -179,7 +180,7 @@ public class PlayerCollisionControl : MonoBehaviour
             if(gameStateController != null)
             {
                 gameStateController.SetGameOverState();
-                //audioController.PlayGameOverSE();
+                audioController.PlayGameOverSE();
             }
         }
         else if(collision.CompareTag("AnimTrigger"))

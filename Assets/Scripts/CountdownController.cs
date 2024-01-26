@@ -6,6 +6,8 @@ public class CountdownController : MonoBehaviour
 {
     public SpriteRenderer countdownSprite;
     public GameObject countDownObject;
+    public GameObject ruleButton;
+    public GameObject ruleImage;
     public Sprite[] countdownSprites;
     public float countdownDuration = 4f;
     private GameManager gameManager; // GameManagerへの参照
@@ -15,15 +17,48 @@ public class CountdownController : MonoBehaviour
     {
         gameStateController = FindObjectOfType<GameStateController>();
         gameManager = FindObjectOfType<GameManager>();
-        gameStateController.SetCountdownState();
     }
 
     private void Start()
+    {
+        if (gameManager != null && gameManager.CurrentState == GameManager.GameState.Rule)
+        {
+            ruleButton.SetActive(true);
+            ruleImage.SetActive(true);
+            countDownObject.SetActive(false);
+        }
+        else
+        {
+            ruleButton.SetActive(false);
+            ruleImage.SetActive(false);
+            Count();
+        }
+    }
+
+    private void Update()
+    {
+        if (gameManager != null && gameManager.CurrentState == GameManager.GameState.Rule)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                gameStateController.SetCountdownState();
+                Count();
+            }
+        }
+    }
+
+    public void Count()
     {
         if (gameManager != null && gameManager.CurrentState == GameManager.GameState.Countdown)
         {
             StartCoroutine(StartCountdown());
             countDownObject.SetActive(true);
+            ruleButton.SetActive(false);
+            ruleImage.SetActive(false);
+        }
+        else
+        {
+            countDownObject.SetActive(false);
         }
     }
 

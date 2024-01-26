@@ -37,10 +37,16 @@ public class AudioController : MonoBehaviour
                 break;
             /*case GameManager.GameState.GameOver:
                 PlayBGM(gameOverBGM);
+                break;*/
+                case GameManager.GameState.GameOver:
+                StopBGM();
                 break;
-            case GameManager.GameState.GameClear:
+            /*case GameManager.GameState.GameClear:
                 PlayBGM(gameClearBGM);
                 break;*/
+                case GameManager.GameState.GameClear:
+                StopBGM();
+                break;
             case GameManager.GameState.Credit:
                 PlayBGM(creditBGM);
                 break;
@@ -54,6 +60,11 @@ public class AudioController : MonoBehaviour
             bgmAudioSource.clip = clip;
             bgmAudioSource.Play();
         }
+    }
+
+    public void StopBGM()
+    {
+        bgmAudioSource.Stop();
     }
 
     public void PlaySE(AudioClip clip)

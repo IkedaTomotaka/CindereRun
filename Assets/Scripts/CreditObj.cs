@@ -17,10 +17,13 @@ public class CreditObj : MonoBehaviour
         // シーン遷移時にGameManagerの参照を再取得する
         gameManager = FindObjectOfType<GameManager>();
         gameStateController = FindObjectOfType<GameStateController>();
+        gameStateController.SetStartState();
     }
     // Start is called before the first frame update
     void Start()
     {     
+        buttonA.SetActive(true);
+        buttonB.SetActive(true);
     }
 
     // Update is called once per frame

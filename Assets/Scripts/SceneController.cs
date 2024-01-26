@@ -8,11 +8,13 @@ public class SceneController : MonoBehaviour
     private GameManager gameManager;
     public GameStateController gameStateController;
     public string nextSceneName;
+    public CountdownController countdownController;
 
     private void Awake()
     {
       gameManager = FindObjectOfType<GameManager>();
       gameStateController = FindObjectOfType<GameStateController>();
+      countdownController = FindObjectOfType<CountdownController>();
     }
 
     // タイトルシーンへ遷移
@@ -25,6 +27,12 @@ public class SceneController : MonoBehaviour
     public void GoToTitleState()
     {
         gameStateController.SetStartState();
+    }
+
+    public void GotoStage1()
+    {
+        SceneManager.LoadScene("Stage1");
+        gameStateController.SetRuleState();
     }
 
     // 次のステージへ遷移
@@ -44,6 +52,12 @@ public class SceneController : MonoBehaviour
     public void GoToCreditState()
     {
         gameStateController.SetCreditState();
+    }
+    
+    public void GotoCountDown()
+    {
+        gameStateController.SetCountdownState();
+        countdownController.Count();
     }
 
     // ゲームを再スタート

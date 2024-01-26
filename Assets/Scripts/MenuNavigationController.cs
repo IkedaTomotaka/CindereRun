@@ -12,6 +12,7 @@ public class MenuNavigationController : MonoBehaviour
     public GameObject defaultGameOverButton;  // GameOver状態でのデフォルトボタン
     public GameObject defaultGameClearButton; // GameClear状態でのデフォルトボタン
     public GameObject defaultGameStartButton; // Start状態でのデフォルトボタン
+    public GameObject defaultGameRuleButton;
 
     private GameObject lastSelectedButton; // 最後に選択されたボタン
     public GameStateController gameStateController; // GameStateControllerへの参照
@@ -56,6 +57,9 @@ public class MenuNavigationController : MonoBehaviour
                 SelectDefaultButtonIfChanged(defaultGameClearButton);
                 break;
             case GameManager.GameState.Start:
+                SelectDefaultButtonIfChanged(defaultGameStartButton);
+                break;
+            case GameManager.GameState.Rule:
                 SelectDefaultButtonIfChanged(defaultGameStartButton);
                 break;
         }
