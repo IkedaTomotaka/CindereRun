@@ -29,10 +29,6 @@ public class CameraMovement : MonoBehaviour
             MoveCameraVertically(); // 垂直移動処理
             //MoveCameraHorizontally(); // 水平移動処理
         }
-        else
-        {
-            elapsedTime = 0f;
-        }
     }
 
     void MoveCameraVertically()

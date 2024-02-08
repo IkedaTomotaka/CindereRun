@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class CountdownController : MonoBehaviour
 {
@@ -17,6 +19,11 @@ public class CountdownController : MonoBehaviour
     {
         gameStateController = FindObjectOfType<GameStateController>();
         gameManager = FindObjectOfType<GameManager>();
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Stage3" || currentSceneName == "Stage2")
+        {
+            gameStateController.SetCountdownState();
+        }
     }
 
     private void Start()

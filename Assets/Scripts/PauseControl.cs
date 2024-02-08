@@ -74,7 +74,7 @@ public class PauseControl : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
 
         // 特定のシーンでのみ以下の処理を実行
-        if (currentSceneName == "Stage3")
+        if (currentSceneName == "Stage3" || currentSceneName == "Stage2")
         {
             // すべてのObjSetActiveオブジェクトに対して操作を行う
             foreach (var objSetActive in objSetActiveList)

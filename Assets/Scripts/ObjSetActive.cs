@@ -22,7 +22,7 @@ public class ObjSetActive : MonoBehaviour
       string currentSceneName = SceneManager.GetActiveScene().name;
 
       // 特定のシーンでのみAnimatorを取得する
-      if (currentSceneName == "Stage3")
+      if (currentSceneName == "Stage3" || currentSceneName == "Stage2")
       {
         targetAnimator = targetObject.GetComponent<Animator>();
       }
@@ -32,10 +32,17 @@ public class ObjSetActive : MonoBehaviour
     void Update()
     {
         // ゲーム状態がプレイ中の場合にのみ入力を受け付ける
-        if (gameManager.CurrentState != GameManager.GameState.Playing)
+        if (gameManager.CurrentState == GameManager.GameState.Playing && targetObject.activeSelf)
         {
             // targetAnimatorがnullでないことを確認
             if (targetAnimator != null)
+            {
+                targetAnimator.enabled = true;
+            }
+        }
+        else
+        {
+            if(targetAnimator != null)
             {
                 targetAnimator.enabled = false;
             }
