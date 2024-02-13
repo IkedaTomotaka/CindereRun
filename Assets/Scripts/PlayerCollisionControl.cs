@@ -55,7 +55,7 @@ public class PlayerCollisionControl : MonoBehaviour
             //StartCoroutine(DisableColliderTemporarily());
             if (gameTimer != null)
             {
-                gameTimer.SubtractTime(gameTimer.timePenalty); // 敵に触れた時に時間ペナルティを適用
+                gameTimer.SubtractTime(); // 敵に触れた時に時間ペナルティを適用
                 audioController.PlayDamageSE();
             }
 

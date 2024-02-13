@@ -38,6 +38,10 @@ public class Timer : MonoBehaviour
         // タイムスケールが0でないことを確認するデバッグステートメントを追加
         if (Time.timeScale == 0)
         {
+                    remainingTime = 0;
+                    UpdateTimeText();
+                    gameStateController.SetGameOverState();
+                    audioController.PlayGameOverSE();
             //Debug.Log("Time.timeScale is 0, which means the game is paused or time is not moving.");
         }
         if (bonusObject.activeSelf == true)
@@ -65,20 +69,17 @@ public class Timer : MonoBehaviour
                 remainingTime -= Time.deltaTime;
 
                 UpdateTimeText();
-
-                if (remainingTime <= 0)
-                {
-                    remainingTime = 0;
-                    UpdateTimeText();
-                    gameStateController.SetGameOverState();
-                    audioController.PlayGameOverSE();
-                }
+                
+            if (remainingTime <= 0)
+            {
+                remainingTime = 0;
+                UpdateTimeText();
+                gameStateController.SetGameOverState();
+                audioController.PlayGameOverSE();
             }
-        }
-        else
-        {
-            // GameManagerがPlaying状態ではない場合にログを表示
-            //Debug.Log("GameManager state is not Playing. Current state: " + gameManager.CurrentState);
+
+                
+            }
         }
     }
 
@@ -95,10 +96,15 @@ public class Timer : MonoBehaviour
     }
 
 
-    public void SubtractTime(float timeAmount)
+    public void SubtractTime()
     {
-        remainingTime -= timeAmount;
-        if (remainingTime < 0) remainingTime = 0;
+        remainingTime -= timePenalty;
+        if (remainingTime <= 0)
+        {
+            remainingTime = 0;
+            gameStateController.SetGameOverState();
+            audioController.PlayGameOverSE();
+        }
         UpdateTimeText();
     }
 
