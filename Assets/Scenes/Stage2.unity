@@ -2674,7 +2674,7 @@ MonoBehaviour:
   fractionTimeText: {fileID: 2054770276}
   timePenalty: 2
   timeBonus: 3
-  startingTime: 30
+  startingTime: 10
   bonusObject: {fileID: 512916175}
   stopTimer: 3
 --- !u!1001 &812977960
@@ -7016,7 +7016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReturnTitleTime: 0
-  retrySceneName: Stage2a
+  retrySceneName: Stage2
   nextSceneName: Stage3
   titleSceneName: Title
   gameStateController: {fileID: 391521238}
